@@ -20,3 +20,20 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
     end
   end,
 })
+
+-- Show diagnostics for the code under the cursor after pausing in Normal mode.
+local diagnostic_float_group = vim.api.nvim_create_augroup("user_diagnostic_float", { clear = true })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  group = diagnostic_float_group,
+  callback = function()
+    if vim.fn.mode() == "n" then
+      vim.diagnostic.open_float({
+        border = "rounded",
+        focusable = false,
+        scope = "cursor",
+        source = "if_many",
+      })
+    end
+  end,
+})
