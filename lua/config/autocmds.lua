@@ -37,3 +37,25 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end
   end,
 })
+
+-- Run ESLint's fix-all command before saving buffers where eslint-lsp is attached.
+local eslint_fix_group = vim.api.nvim_create_augroup("user_eslint_fix_all", { clear = true })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = eslint_fix_group,
+  callback = function(args)
+    local client = args.data and vim.lsp.get_client_by_id(args.data.client_id) or nil
+    if not client or client.name ~= "eslint" then
+      return
+    end
+
+    vim.api.nvim_clear_autocmds({ group = eslint_fix_group, buffer = args.buf })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = eslint_fix_group,
+      buffer = args.buf,
+      callback = function()
+        vim.cmd.LspEslintFixAll()
+      end,
+    })
+  end,
+})
