@@ -1,3 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- 키맵은 VeryLazy 이벤트에서 자동으로 로드됩니다.
+-- 항상 설정되는 기본 키맵: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- 추가 키맵은 여기에 작성합니다.
