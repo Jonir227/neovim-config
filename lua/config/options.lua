@@ -5,9 +5,6 @@
 -- Disable SpellCheck
 vim.opt.spell = false
 
--- Auto reload files changed outside of Neovim
+-- Allow buffers to reload after external file changes.
+-- The checktime trigger itself lives in config/autocmds.lua.
 vim.opt.autoread = true
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-  pattern = "*",
-  command = "checktime",
-})
