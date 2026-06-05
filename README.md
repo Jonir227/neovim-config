@@ -7,7 +7,6 @@
 - `lazyvim.plugins.extras.ai.copilot`
 - `lazyvim.plugins.extras.formatting.prettier`
 - `lazyvim.plugins.extras.lang.json`
-- `lazyvim.plugins.extras.lang.markdown`
 - `lazyvim.plugins.extras.lang.typescript`
 - `lazyvim.plugins.extras.linting.eslint`
 
@@ -35,9 +34,8 @@ Normal 모드에서 커서가 코드 위에 머무르면 현재 커서 위치의
 
 ## 마크다운
 
-미리보기와 렌더링 지원을 위해 LazyVim의 마크다운 추가 기능을 활성화했습니다.
-
-`markdownlint-cli2`는 Mason 자동 설치 대상에서 제외했습니다. 설치되어 있지 않은 환경에서는 마크다운 lint 진단과 fix가 실행되지 않습니다.
+- `marksman`으로 마크다운 LSP를 사용합니다.
+- `render-markdown.nvim`으로 마크다운 렌더링을 사용합니다.
 
 ## ESLint 자동 수정
 

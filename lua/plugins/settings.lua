@@ -1,10 +1,6 @@
-local function remove_item(items, item)
-  return vim.tbl_filter(function(value)
-    return value ~= item
-  end, items or {})
-end
-
 return {
+  -- blink.cmp supertab 설정
+  -- https://main.cmp.saghen.dev/configuration/keymap.html#super-tab
   {
     "saghen/blink.cmp",
     opts = {
@@ -13,6 +9,7 @@ return {
       },
     },
   },
+  -- snacks
   {
     "folke/snacks.nvim",
     opts = {
@@ -50,12 +47,5 @@ return {
         },
       },
     },
-  },
-  {
-    "mason-org/mason.nvim",
-    opts = function(_, opts)
-      -- LazyVim 마크다운 추가 기능을 활성화해도 markdownlint는 자동 설치하지 않습니다.
-      opts.ensure_installed = remove_item(opts.ensure_installed, "markdownlint-cli2")
-    end,
   },
 }
