@@ -17,7 +17,7 @@ return {
         sources = {
           files = {
             hidden = true,
-            ignored = false,
+            ignored = true,
             exclude = {
               "node_modules",
             },
@@ -25,10 +25,10 @@ return {
           -- Snacks 탐색기 설정
           explorer = {
             hidden = true,
-            ignored = false,
+            ignored = true,
             -- plan 디렉터리는 gitignore되어 있지만 탐색기에서는 보이도록 설정합니다.
-            include = {
-              "plan/**",
+            exclude = {
+              "node_modules",
             },
             -- 탐색기가 Esc로 닫히지 않도록 설정합니다.
             win = {
