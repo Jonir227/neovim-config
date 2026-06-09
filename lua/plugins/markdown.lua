@@ -11,6 +11,8 @@ return {
   -- 마크다운 렌더링 플러그인
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    cmd = { "RenderMarkdown" },
     opts = {
       code = {
         sign = false,
