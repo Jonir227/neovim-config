@@ -1,47 +1,33 @@
 # Neovim 설정
 
-[LazyVim](https://github.com/LazyVim/LazyVim)을 기반으로 한 개인 Neovim 설정입니다.
+[LazyVim](https://github.com/LazyVim/LazyVim) starter 기반 개인 설정입니다.
 
-## 활성화한 LazyVim 추가 기능
+## 활성화한 extras
 
-- `lazyvim.plugins.extras.ai.copilot`
-- `lazyvim.plugins.extras.formatting.prettier`
-- `lazyvim.plugins.extras.lang.json`
-- `lazyvim.plugins.extras.lang.typescript`
-- `lazyvim.plugins.extras.linting.eslint`
+`:LazyExtras`로 다음을 켰습니다. 웹 프론트엔드 작업이 주 용도입니다.
 
-## 자동완성
+- AI: Copilot
+- 언어: TypeScript, JSON
+- 포맷/린트: Prettier, ESLint
 
-`blink.cmp`는 `super-tab` 프리셋을 사용합니다.
+## 파일 동기화
 
-## 선택기와 탐색기
+`autoread`를 켜고 포커스 복귀·유휴 시점에 `checktime`을 실행합니다. AI 에이전트가 에디터 밖에서 파일을 수정해도 버퍼에 자동으로 반영되게 하려는 의도입니다.
 
-Snacks 선택기는 숨김 파일은 보여주되, gitignore된 파일은 기본적으로 제외하도록 설정했습니다.
+## 진단 표시
 
-- `files`: 숨김 파일을 보여주고, `node_modules`를 제외하며, gitignore된 파일 전체를 포함하지 않습니다.
-- `explorer`: 숨김 파일을 보여주고, gitignore된 `plan/**` 디렉터리는 명시적으로 포함합니다.
-- Snacks 탐색기의 input/list 창에서는 실수로 탐색기가 닫히지 않도록 `Esc`를 비활성화했습니다.
+Normal 모드에서 커서가 멈추면 그 위치의 diagnostics를 포커스를 빼앗지 않는 floating window로 띄웁니다. 단축키 없이 흐름을 끊지 않고 문제를 확인하기 위함입니다.
 
-## 파일 다시 읽기
+## 문서 작업
 
-Neovim 밖에서 변경된 파일을 버퍼가 다시 읽을 수 있도록 `autoread`를 활성화했습니다.
+전역 spell check를 끄고, 산문 계열 파일에서도 spell만 끈 채 줄바꿈 동작은 유지합니다.
 
-Neovim이 포커스를 다시 얻거나, 버퍼에 진입하거나, 유휴 상태가 되면 `checktime`을 실행합니다. 설정을 다시 로드해도 autocmd가 중복 등록되지 않도록 `clear = true`인 그룹을 사용합니다.
+마크다운은 LazyVim에 `lang.markdown` extra가 있지만 markdownlint가 함께 묶여 있어, lint 없이 쓰고 싶어 extra 대신 직접 설정했습니다. `marksman` LSP와 `render-markdown.nvim`으로 편집 경험을 살리고, 저장 시 Prettier로만 정리합니다.
 
-## 진단
+## 파일 탐색
 
-Normal 모드에서 커서가 코드 위에 머무르면 현재 커서 위치의 diagnostics를 포커스를 가져가지 않는 둥근 floating window로 보여줍니다.
+snacks picker와 explorer 모두 숨김·gitignore 파일까지 노출하고(`node_modules`만 제외) gitignore된 작업 디렉터리도 탐색할 수 있게 합니다. explorer는 사이드바로 고정하고 `Esc`로 실수로 닫히지 않게 합니다.
 
-## 마크다운
+## 자동완성과 린트/포맷
 
-- `marksman`으로 마크다운 LSP를 사용합니다.
-- `render-markdown.nvim`으로 마크다운 렌더링을 사용합니다.
-
-## ESLint 자동 수정
-
-`eslint-lsp`가 버퍼에 연결되면 저장 전에 `LspEslintFixAll`을 자동으로 실행합니다.
-
-이 동작은 Prettier formatting과 별도입니다.
-
-- ESLint는 import 정리나 unused import 제거처럼 자동 수정 가능한 lint rule을 처리합니다.
-- Prettier는 LazyVim의 기존 format-on-save 흐름을 통해 코드 formatting을 처리합니다.
+`blink.cmp`는 `super-tab` 프리셋으로 Tab 중심 흐름을 따릅니다. 저장 시 ESLint는 자동 수정 가능한 규칙을 고치고, 포매팅은 Prettier가 맡도록 역할을 나눕니다.
