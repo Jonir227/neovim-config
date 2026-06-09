@@ -14,6 +14,13 @@ return {
     "folke/snacks.nvim",
     opts = {
       picker = {
+        layout = {
+          preset = "default",
+          layout = {
+            width = 0.9,
+            height = 0.9,
+          },
+        },
         sources = {
           files = {
             hidden = true,
@@ -24,6 +31,14 @@ return {
           },
           -- Snacks 탐색기 설정
           explorer = {
+            layout = {
+              layout = {
+                preset = "sidebar",
+                preview = false,
+                width = 40,
+                minWidth = 40,
+              },
+            },
             hidden = true,
             ignored = true,
             -- plan 디렉터리는 gitignore되어 있지만 탐색기에서는 보이도록 설정합니다.
