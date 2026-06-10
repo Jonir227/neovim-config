@@ -9,6 +9,7 @@
 - AI: Copilot
 - 언어: TypeScript, JSON
 - 포맷/린트: Prettier, ESLint
+- 유틸: GitHub CLI 연동
 
 ## 파일 동기화
 

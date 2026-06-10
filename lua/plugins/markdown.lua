@@ -14,15 +14,16 @@ return {
     ft = { "markdown" },
     cmd = { "RenderMarkdown" },
     opts = {
+      render_modes = { "n", "c", "t" },
       code = {
+        enabled = true,
         sign = false,
-        width = "block",
-        right_pad = 1,
+        style = "full",
+        position = "left",
+        language_pad = 1,
+        disable_background = { "diff" },
       },
-      heading = {
-        sign = false,
-        icons = {},
-      },
+      heading = {},
     },
   },
   -- 마크다운 포매터 설정
