@@ -23,6 +23,13 @@ return {
         },
         sources = {
           files = {
+            layout = {
+              preset = "default",
+              layout = {
+                width = 0.9,
+                height = 0.9,
+              },
+            },
             hidden = true,
             ignored = true,
             exclude = {
