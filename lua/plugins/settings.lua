@@ -1,4 +1,14 @@
 return {
+  {
+    "adityastomar67/italicize",
+    event = "ColorScheme", -- Load when colorscheme changes
+    config = function()
+      require("italicize").setup({
+        transparency = true,
+        italics = false,
+      })
+    end,
+  },
   -- blink.cmp supertab 설정
   -- https://main.cmp.saghen.dev/configuration/keymap.html#super-tab
   {
